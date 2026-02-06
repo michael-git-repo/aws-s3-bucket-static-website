@@ -79,15 +79,36 @@ nav a:hover { opacity:1; }
   position:absolute;
   inset:0;
   background:rgba(0,0,0,0.75);
-  z-index:1;
+  z-index:2;
 }
 
+/* Animated red glow background */
+.animated-bg {
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(218,41,28,0.6), transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(218,41,28,0.5), transparent 50%);
+  animation: moveBackground 8s ease-in-out infinite alternate;
+  z-index:0;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 30% 40%, 70% 60%;
+  }
+  100% {
+    background-position: 40% 50%, 60% 50%;
+  }
+}
+
+/* Player images */
 .player {
   position:absolute;
   bottom:0;
   height:85%;
   opacity:0.35;
-  z-index:0;
+  z-index:1;
   transition:transform 0.6s ease;
 }
 
@@ -99,7 +120,7 @@ nav a:hover { opacity:1; }
 
 .hero-content {
   position:relative;
-  z-index:2;
+  z-index:3;
   max-width:800px;
   padding:40px;
 }
@@ -127,7 +148,7 @@ nav a:hover { opacity:1; }
   opacity:0.9;
 }
 
-/* CHANT */
+/* Chant */
 .chant {
   position:absolute;
   bottom:20px;
@@ -138,7 +159,7 @@ nav a:hover { opacity:1; }
   color:var(--red);
   white-space:nowrap;
   overflow:hidden;
-  z-index:2;
+  z-index:3;
 }
 
 .chant span {
@@ -150,92 +171,6 @@ nav a:hover { opacity:1; }
 @keyframes scrollChant {
   0% { transform:translateX(0); }
   100% { transform:translateX(-100%); }
-}
-
-/* FEATURES */
-.features {
-  padding:80px 8%;
-  background:#111;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:30px;
-}
-
-.card {
-  background:#1a1a1a;
-  padding:30px;
-  border-radius:16px;
-  border-top:3px solid var(--red);
-  opacity:0;
-  transform:translateY(40px);
-  transition:transform 0.6s, opacity 0.6s;
-}
-
-.card.visible {
-  opacity:1;
-  transform:translateY(0);
-}
-
-.card h3 {
-  margin-bottom:10px;
-  color:var(--gold);
-}
-
-.card p {
-  font-size:0.95rem;
-  opacity:0.85;
-}
-
-/* GALLERY */
-.gallery {
-  padding:80px 8%;
-}
-
-.gallery h2 {
-  text-align:center;
-  margin-bottom:50px;
-  font-size:2.2rem;
-  color:var(--red);
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-}
-
-.grid figure {
-  position:relative;
-  overflow:hidden;
-  border-radius:16px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:transform 0.6s, opacity 0.6s;
-}
-
-.grid figure.visible {
-  opacity:1;
-  transform:translateY(0);
-}
-
-.grid img {
-  width:100%;
-  height:320px;
-  object-fit:cover;
-  transition:transform 0.6s;
-}
-
-.grid figure:hover img {
-  transform:scale(1.1);
-}
-
-.grid figcaption {
-  position:absolute;
-  bottom:0;
-  width:100%;
-  padding:15px;
-  background:linear-gradient(transparent, rgba(0,0,0,0.85));
-  font-size:0.9rem;
 }
 
 footer {
@@ -257,12 +192,12 @@ footer {
   </div>
   <div>
     <a href="#home">Home</a>
-    <a href="#features">Mindset</a>
-    <a href="#gallery">Gallery</a>
   </div>
 </nav>
 
 <section class="hero" id="home">
+
+  <div class="animated-bg"></div>
 
   <img class="player left-player" src="8207c7fb-1d22-487d-9057-ac0465f429e9.png" alt="Player Left">
   <img class="player right-player" src="b495b728-5ae0-4f81-bed4-a94c0f8a3e16.png" alt="Player Right">
@@ -278,41 +213,11 @@ footer {
     <p>Inspired by Manchester United legends and celebration energy.</p>
   </div>
 
-  <audio autoplay loop>
-    <source src="https://www.soundjay.com/football/sounds/crowd-cheer-01.mp3" type="audio/mpeg">
-  </audio>
-
 </section>
 
 <footer>
   © 2026 Michael • Glory Glory Man United
 </footer>
-
-<script>
-const cards = document.querySelectorAll('.card');
-const figures = document.querySelectorAll('.grid figure');
-
-function reveal() {
-  const triggerBottom = window.innerHeight * 0.85;
-
-  cards.forEach(card => {
-    const top = card.getBoundingClientRect().top;
-    if(top < triggerBottom) {
-      card.classList.add('visible');
-    }
-  });
-
-  figures.forEach(fig => {
-    const top = fig.getBoundingClientRect().top;
-    if(top < triggerBottom) {
-      fig.classList.add('visible');
-    }
-  });
-}
-
-window.addEventListener('scroll', reveal);
-window.addEventListener('load', reveal);
-</script>
 
 </body>
 </html>
