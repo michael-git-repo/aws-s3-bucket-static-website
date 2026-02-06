@@ -3,8 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <title>Michael's Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url("https://images.unsplash.com/photo-1606925797300-0b35e9d1794e");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .container {
+      padding: 40px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #f5c542;
+    }
+
+    p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to Michael's Home</h1>
+  <div class="container">
+    <h1>Welcome to Michael's Home</h1>
+    <h2>Cristiano Ronaldo ⚡ Kaká</h2>
+    <p>Where legends inspire greatness.</p>
+    <footer>© 2026 Michael</footer>
+  </div>
 </body>
 </html>
