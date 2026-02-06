@@ -1,219 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Michael's Home</title>
+  <meta charset="UTF-8">
+  <title>Michael's Manchester United Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&family=Montserrat:wght@600&family=Oswald:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --gold: #f5c542;
-      --dark: #0b0b0b;
+      --red: #DA291C;
+      --gold: #F5C542;
+      --dark: #0B0B0B;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--dark);
-      color: white;
-      scroll-behavior: smooth;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Poppins', sans-serif; background: var(--dark); color: white; scroll-behavior:smooth; }
 
     /* NAVBAR */
     nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(6px);
+      position: fixed; top:0; width:100%;
+      padding: 18px 8%; display:flex; justify-content:space-between; align-items:center;
+      background: rgba(0,0,0,0.6); backdrop-filter:blur(6px); z-index:10;
     }
-
-    nav h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: white;
-      font-size: 0.9rem;
-      opacity: 0.8;
-      transition: opacity 0.3s;
-    }
-
-    nav a:hover {
-      opacity: 1;
-    }
+    .nav-left { display:flex; align-items:center; gap:12px; }
+    .nav-left img { width:36px; }
+    nav h1 { font-family: 'Montserrat', sans-serif; font-size:1.1rem; letter-spacing:2px; color:var(--red); }
+    nav a { margin-left:20px; text-decoration:none; color:white; font-size:0.9rem; opacity:0.8; transition:opacity 0.3s; }
+    nav a:hover { opacity:1; }
 
     /* HERO */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-size: cover;
-      background-position: center;
-      animation: slideshow 20s infinite;
-      position: relative;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-    }
-
-    .hero-content {
-      position: relative;
-      max-width: 800px;
-      padding: 40px;
-    }
-
-    .hero h2 {
-      font-family: 'Oswald', sans-serif;
-      letter-spacing: 4px;
-      color: var(--gold);
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.05rem;
-      opacity: 0.9;
-    }
+    .hero { height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; background-size:cover; background-position:center; animation:slideshow 20s infinite; position:relative; }
+    .hero::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.65); }
+    .hero-content { position:relative; max-width:800px; padding:40px; }
+    .hero-content img { width:120px; margin-bottom:20px; filter: drop-shadow(0 0 15px rgba(218,41,28,0.7)); }
+    .hero h2 { font-family:'Oswald',sans-serif; color:var(--gold); letter-spacing:3px; margin-bottom:15px; }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:3.5rem; margin-bottom:20px; }
+    .hero p { font-size:1.05rem; opacity:0.9; }
 
     /* FEATURES */
-    .features {
-      padding: 80px 8%;
-      background: #111;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background: #1a1a1a;
-      padding: 30px;
-      border-radius: 16px;
-      transition: transform 0.4s, box-shadow 0.4s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-    }
-
-    .card h3 {
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 10px;
-      color: var(--gold);
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      opacity: 0.85;
-    }
+    .features { padding:80px 8%; background:#111; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:30px; }
+    .card { background:#1a1a1a; padding:30px; border-radius:16px; transition:transform 0.4s, box-shadow 0.4s; border-top:3px solid var(--red); }
+    .card:hover { transform:translateY(-8px); box-shadow:0 15px 40px rgba(0,0,0,0.6); }
+    .card h3 { font-family:'Montserrat',sans-serif; margin-bottom:10px; color:var(--gold); }
+    .card p { font-size:0.95rem; opacity:0.85; }
 
     /* GALLERY */
-    .gallery {
-      padding: 80px 8%;
-    }
+    .gallery { padding:80px 8%; }
+    .gallery h2 { text-align:center; font-family:'Montserrat',sans-serif; margin-bottom:50px; font-size:2.2rem; color:var(--red); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:25px; }
+    .grid figure { position:relative; overflow:hidden; border-radius:16px; }
+    .grid img { width:100%; height:320px; object-fit:cover; transition:transform 0.6s; }
+    .grid figure:hover img { transform:scale(1.1); }
+    .grid figcaption { position:absolute; bottom:0; width:100%; padding:15px; background:linear-gradient(transparent, rgba(0,0,0,0.85)); font-size:0.9rem; }
 
-    .gallery h2 {
-      text-align: center;
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 50px;
-      font-size: 2.2rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-
-    .grid figure {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-    }
-
-    .grid img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      transition: transform 0.6s;
-    }
-
-    .grid figure:hover img {
-      transform: scale(1.1);
-    }
-
-    .grid figcaption {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.85));
-      font-size: 0.9rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: black;
-      font-size: 0.85rem;
-      opacity: 0.6;
-    }
+    footer { text-align:center; padding:30px; background:black; font-size:0.85rem; opacity:0.6; }
 
     /* SLIDESHOW */
     @keyframes slideshow {
-      0% {
-        background-image:
-          linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-          url("https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d");
-      }
-      33% {
-        background-image:
-          linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-          url("https://images.unsplash.com/photo-1521412644187-c49fa049e84d");
-      }
-      66% {
-        background-image:
-          linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-          url("https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e");
-      }
+      0% { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d"); }
+      33% { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1521412644187-c49fa049e84d"); }
+      66% { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e"); }
     }
+
+    @media(max-width:768px){ .hero h1{font-size:2.5rem;} .hero h2{font-size:1rem;} }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAVBAR -->
   <nav>
-    <h1>MICHAEL</h1>
+    <div class="nav-left">
+      <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Manchester United Logo">
+      <h1>MICHAEL</h1>
+    </div>
     <div>
       <a href="#home">Home</a>
       <a href="#features">Mindset</a>
@@ -224,52 +85,50 @@
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-content">
-      <h2>LEGACY • DISCIPLINE • GREATNESS</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Manchester United Logo">
+      <h2>GLORY • LEGACY • RED DEVILS</h2>
       <h1>Welcome to Michael's Home</h1>
-      <p>
-        Inspired by football legends like Cristiano Ronaldo and Kaká —
-        a space built around focus, faith, and the relentless pursuit of excellence.
-      </p>
+      <p>Inspired by Manchester United legends, Cristiano Ronaldo & Kaká. Built on passion, focus, and winning mentality.</p>
     </div>
   </section>
 
   <!-- FEATURES -->
   <section class="features" id="features">
     <div class="card">
+      <h3>Winning Mentality</h3>
+      <p>At United, winning isn’t hope — it’s expectation.</p>
+    </div>
+    <div class="card">
       <h3>Discipline</h3>
-      <p>Consistency beats talent when talent stops working.</p>
+      <p>Greatness is built every day, not just on matchday.</p>
     </div>
     <div class="card">
-      <h3>Faith</h3>
-      <p>Belief fuels purpose, direction, and inner strength.</p>
-    </div>
-    <div class="card">
-      <h3>Excellence</h3>
-      <p>Every detail matters when you aim to be the best.</p>
+      <h3>Legacy</h3>
+      <p>History matters — and the future is earned.</p>
     </div>
   </section>
 
   <!-- GALLERY -->
   <section class="gallery" id="gallery">
-    <h2>Legend Moments</h2>
+    <h2>Red Devils Energy</h2>
     <div class="grid">
       <figure>
         <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a">
-        <figcaption>Moments that define greatness</figcaption>
+        <figcaption>Dreams start here</figcaption>
       </figure>
       <figure>
         <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2">
-        <figcaption>Focus under pressure</figcaption>
+        <figcaption>Focus. Fight. Finish.</figcaption>
       </figure>
       <figure>
         <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45">
-        <figcaption>Passion for the game</figcaption>
+        <figcaption>Built for big moments</figcaption>
       </figure>
     </div>
   </section>
 
   <footer>
-    © 2026 Michael • Built with purpose ⚽
+    © 2026 Michael • Glory Glory Man United 🔴
   </footer>
 
 </body>
