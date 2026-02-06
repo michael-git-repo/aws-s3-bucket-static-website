@@ -6,9 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&family=Montserrat:wght@600&family=Oswald:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&family=Montserrat:wght@600&family=Oswald:wght@500&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --gold: #f5c542;
+      --dark: #0b0b0b;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -17,20 +22,54 @@
 
     body {
       font-family: 'Poppins', sans-serif;
+      background: var(--dark);
       color: white;
-      background: black;
+      scroll-behavior: smooth;
     }
 
-    /* HERO SECTION */
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    nav h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    /* HERO */
     .hero {
       height: 100vh;
-      background-size: cover;
-      background-position: center;
-      animation: slideshow 18s infinite;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      background-size: cover;
+      background-position: center;
+      animation: slideshow 20s infinite;
       position: relative;
     }
 
@@ -43,74 +82,114 @@
 
     .hero-content {
       position: relative;
-      z-index: 1;
+      max-width: 800px;
       padding: 40px;
     }
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.2rem;
-      margin-bottom: 10px;
-      animation: fadeInDown 1.5s ease;
-    }
-
-    h2 {
+    .hero h2 {
       font-family: 'Oswald', sans-serif;
-      font-size: 1.6rem;
-      color: #f5c542;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-      animation: fadeInUp 1.5s ease;
+      letter-spacing: 4px;
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin-bottom: 15px;
     }
 
-    p {
-      max-width: 600px;
-      margin: auto;
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
       opacity: 0.9;
-      animation: fadeIn 2s ease;
+    }
+
+    /* FEATURES */
+    .features {
+      padding: 80px 8%;
+      background: #111;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 16px;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    }
+
+    .card h3 {
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 10px;
+      color: var(--gold);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      opacity: 0.85;
     }
 
     /* GALLERY */
     .gallery {
-      padding: 60px 8%;
-      background: #0d0d0d;
+      padding: 80px 8%;
     }
 
-    .gallery h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
+    .gallery h2 {
       text-align: center;
-      margin-bottom: 40px;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 50px;
+      font-size: 2.2rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .grid figure {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
     }
 
     .grid img {
       width: 100%;
-      height: 280px;
+      height: 320px;
       object-fit: cover;
-      border-radius: 12px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.6s;
     }
 
-    .grid img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    .grid figure:hover img {
+      transform: scale(1.1);
+    }
+
+    .grid figcaption {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      font-size: 0.9rem;
     }
 
     footer {
       text-align: center;
-      padding: 25px;
+      padding: 30px;
       background: black;
       font-size: 0.85rem;
       opacity: 0.6;
     }
 
-    /* ANIMATIONS */
+    /* SLIDESHOW */
     @keyframes slideshow {
       0% {
         background-image:
@@ -128,50 +207,69 @@
           url("https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e");
       }
     }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
+  <nav>
+    <h1>MICHAEL</h1>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#features">Mindset</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+  </nav>
+
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="hero-content">
+      <h2>LEGACY • DISCIPLINE • GREATNESS</h2>
       <h1>Welcome to Michael's Home</h1>
-      <h2>Inspired by Ronaldo & Kaká</h2>
       <p>
-        Greatness is built on discipline, passion, and belief.
-        This space celebrates football legends and the mindset of champions.
+        Inspired by football legends like Cristiano Ronaldo and Kaká —
+        a space built around focus, faith, and the relentless pursuit of excellence.
       </p>
     </div>
   </section>
 
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="card">
+      <h3>Discipline</h3>
+      <p>Consistency beats talent when talent stops working.</p>
+    </div>
+    <div class="card">
+      <h3>Faith</h3>
+      <p>Belief fuels purpose, direction, and inner strength.</p>
+    </div>
+    <div class="card">
+      <h3>Excellence</h3>
+      <p>Every detail matters when you aim to be the best.</p>
+    </div>
+  </section>
+
   <!-- GALLERY -->
-  <section class="gallery">
-    <h3>Legend Moments</h3>
+  <section class="gallery" id="gallery">
+    <h2>Legend Moments</h2>
     <div class="grid">
-      <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a" alt="Football 1">
-      <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2" alt="Football 2">
-      <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45" alt="Football 3">
-      <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d" alt="Football 4">
+      <figure>
+        <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a">
+        <figcaption>Moments that define greatness</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2">
+        <figcaption>Focus under pressure</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45">
+        <figcaption>Passion for the game</figcaption>
+      </figure>
     </div>
   </section>
 
   <footer>
-    © 2026 Michael • Built with passion ⚽
+    © 2026 Michael • Built with purpose ⚽
   </footer>
 
 </body>
