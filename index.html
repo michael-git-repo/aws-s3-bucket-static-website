@@ -5,7 +5,6 @@
 <title>Michael’s Manchester United Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -16,23 +15,57 @@
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Poppins',sans-serif; background: var(--dark); color:white; scroll-behavior:smooth; overflow-x:hidden; }
+
+body {
+  font-family:'Poppins',sans-serif;
+  background: var(--dark);
+  color:white;
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
 
 /* NAVBAR */
 nav {
-  position: fixed; top:0; width:100%; padding:18px 8%;
-  display:flex; justify-content:space-between; align-items:center;
-  background: rgba(0,0,0,0.6); backdrop-filter:blur(6px); z-index:10;
+  position: fixed;
+  top:0;
+  width:100%;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
+  z-index:10;
 }
-.nav-left { display:flex; align-items:center; gap:12px; }
+
+.nav-left {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
 .nav-left img { width:36px; }
-nav h1 { font-family:'Montserrat',sans-serif; font-size:1.1rem; letter-spacing:2px; color:var(--red); }
-nav a { margin-left:20px; text-decoration:none; color:white; font-size:0.9rem; opacity:0.8; transition:opacity 0.3s; }
+
+nav h1 {
+  font-size:1.1rem;
+  letter-spacing:2px;
+  color:var(--red);
+}
+
+nav a {
+  margin-left:20px;
+  text-decoration:none;
+  color:white;
+  font-size:0.9rem;
+  opacity:0.8;
+  transition:opacity 0.3s;
+}
+
 nav a:hover { opacity:1; }
 
-/* HERO with full‑screen GIF background */
+/* HERO */
 .hero {
-  position: relative;
+  position:relative;
   height:100vh;
   display:flex;
   align-items:center;
@@ -40,85 +73,183 @@ nav a:hover { opacity:1; }
   text-align:center;
   overflow:hidden;
 }
-.hero img.background-gif {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  width:120%;
-  height:auto;
-  opacity:0.35;
-  z-index:0;
-}
+
 .hero::before {
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.75);
   z-index:1;
 }
+
+.player {
+  position:absolute;
+  bottom:0;
+  height:85%;
+  opacity:0.35;
+  z-index:0;
+  transition:transform 0.6s ease;
+}
+
+.left-player { left:-5%; }
+.right-player { right:-5%; }
+
+.hero:hover .left-player { transform:translateX(20px); }
+.hero:hover .right-player { transform:translateX(-20px); }
+
 .hero-content {
   position:relative;
   z-index:2;
   max-width:800px;
   padding:40px;
 }
-.hero-content img.club-logo {
+
+.club-logo {
   width:120px;
   margin-bottom:20px;
-  filter:drop-shadow(0 0 15px rgba(218,41,28,0.7));
 }
-.hero h2 { font-family:'Oswald',sans-serif; color:var(--gold); letter-spacing:3px; margin-bottom:15px; }
-.hero h1 { font-family:'Playfair Display',serif; font-size:3.5rem; margin-bottom:20px; }
-.hero p { font-size:1.05rem; opacity:0.9; }
 
-/* SCROLLING CHANT */
+.hero h2 {
+  font-family:'Oswald',sans-serif;
+  color:var(--gold);
+  letter-spacing:3px;
+  margin-bottom:15px;
+}
+
+.hero h1 {
+  font-family:'Playfair Display',serif;
+  font-size:3.5rem;
+  margin-bottom:20px;
+}
+
+.hero p {
+  font-size:1.05rem;
+  opacity:0.9;
+}
+
+/* CHANT */
 .chant {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-  font-family: 'Oswald', sans-serif;
-  font-size: 2rem;
-  color: var(--red);
-  white-space: nowrap;
-  overflow: hidden;
+  position:absolute;
+  bottom:20px;
+  width:100%;
+  text-align:center;
+  font-family:'Oswald',sans-serif;
+  font-size:2rem;
+  color:var(--red);
+  white-space:nowrap;
+  overflow:hidden;
+  z-index:2;
 }
+
 .chant span {
-  display: inline-block;
-  padding-left: 100%;
-  animation: scrollChant 12s linear infinite;
+  display:inline-block;
+  padding-left:100%;
+  animation:scrollChant 12s linear infinite;
 }
+
 @keyframes scrollChant {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  0% { transform:translateX(0); }
+  100% { transform:translateX(-100%); }
 }
 
 /* FEATURES */
-.features { padding:80px 8%; background:#111; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:30px; }
-.card { background:#1a1a1a; padding:30px; border-radius:16px; transition:transform 0.6s, box-shadow 0.6s, opacity 0.6s; border-top:3px solid var(--red); opacity:0; transform: translateY(40px); }
-.card.visible { opacity:1; transform: translateY(0); }
-.card h3 { font-family:'Montserrat',sans-serif; margin-bottom:10px; color:var(--gold); }
-.card p { font-size:0.95rem; opacity:0.85; }
+.features {
+  padding:80px 8%;
+  background:#111;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
+}
+
+.card {
+  background:#1a1a1a;
+  padding:30px;
+  border-radius:16px;
+  border-top:3px solid var(--red);
+  opacity:0;
+  transform:translateY(40px);
+  transition:transform 0.6s, opacity 0.6s;
+}
+
+.card.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card h3 {
+  margin-bottom:10px;
+  color:var(--gold);
+}
+
+.card p {
+  font-size:0.95rem;
+  opacity:0.85;
+}
 
 /* GALLERY */
-.gallery { padding:80px 8%; }
-.gallery h2 { text-align:center; font-family:'Montserrat',sans-serif; margin-bottom:50px; font-size:2.2rem; color:var(--red); }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
-.grid figure { position:relative; overflow:hidden; border-radius:16px; opacity:0; transform: translateY(40px); transition: transform 0.6s, opacity 0.6s; }
-.grid figure.visible { opacity:1; transform: translateY(0); }
-.grid img { width:100%; height:320px; object-fit:cover; transition:transform 0.6s; }
-.grid figure:hover img { transform:scale(1.1); }
-.grid figcaption { position:absolute; bottom:0; width:100%; padding:15px; background:linear-gradient(transparent, rgba(0,0,0,0.85)); font-size:0.9rem; }
+.gallery {
+  padding:80px 8%;
+}
 
-footer { text-align:center; padding:30px; background:black; font-size:0.85rem; opacity:0.6; }
+.gallery h2 {
+  text-align:center;
+  margin-bottom:50px;
+  font-size:2.2rem;
+  color:var(--red);
+}
 
-@media(max-width:768px){ .hero h1{font-size:2.5rem;} .hero h2{font-size:1rem;} .chant{font-size:1.5rem;} }
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.grid figure {
+  position:relative;
+  overflow:hidden;
+  border-radius:16px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:transform 0.6s, opacity 0.6s;
+}
+
+.grid figure.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.grid img {
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  transition:transform 0.6s;
+}
+
+.grid figure:hover img {
+  transform:scale(1.1);
+}
+
+.grid figcaption {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:15px;
+  background:linear-gradient(transparent, rgba(0,0,0,0.85));
+  font-size:0.9rem;
+}
+
+footer {
+  text-align:center;
+  padding:30px;
+  background:black;
+  font-size:0.85rem;
+  opacity:0.6;
+}
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <div class="nav-left">
     <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Manchester United Logo">
@@ -131,80 +262,51 @@ footer { text-align:center; padding:30px; background:black; font-size:0.85rem; o
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
-  <!-- Dancing GIF background -->
-  <img class="background-gif" src="https://tenor.com/bMIEaKAg5Z.gif" alt="Matheus Cunha Dancing Background">
 
-  <!-- Scrolling chant -->
-  <div class="chant"><span>Glory Glory Man United • Glory Glory Man United • Glory Glory Man United • </span></div>
+  <img class="player left-player" src="8207c7fb-1d22-487d-9057-ac0465f429e9.png" alt="Player Left">
+  <img class="player right-player" src="b495b728-5ae0-4f81-bed4-a94c0f8a3e16.png" alt="Player Right">
+
+  <div class="chant">
+    <span>Glory Glory Man United • Glory Glory Man United • Glory Glory Man United • </span>
+  </div>
 
   <div class="hero-content">
     <img class="club-logo" src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Manchester United Logo">
     <h2>GLORY • LEGACY • RED DEVILS</h2>
     <h1>Welcome to Michael’s Home</h1>
-    <p>Inspired by Manchester United legends and the energy of Matheus Cunha’s celebration.</p>
+    <p>Inspired by Manchester United legends and celebration energy.</p>
   </div>
 
-  <!-- Crowd cheering sound -->
   <audio autoplay loop>
     <source src="https://www.soundjay.com/football/sounds/crowd-cheer-01.mp3" type="audio/mpeg">
   </audio>
-</section>
 
-<!-- FEATURES -->
-<section class="features" id="features">
-  <div class="card">
-    <h3>Winning Mentality</h3>
-    <p>At United, winning isn’t hope — it’s expectation.</p>
-  </div>
-  <div class="card">
-    <h3>Discipline</h3>
-    <p>Greatness is built every day, not just on matchday.</p>
-  </div>
-  <div class="card">
-    <h3>Legacy</h3>
-    <p>History matters — and the future is earned.</p>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
-  <h2>Red Devils Energy</h2>
-  <div class="grid">
-    <figure>
-      <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a" alt="">
-      <figcaption>Dreams start here</figcaption>
-    </figure>
-    <figure>
-      <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2" alt="">
-      <figcaption>Focus. Fight. Finish.</figcaption>
-    </figure>
-    <figure>
-      <img src="https://www.google.com/search?client=firefox-b-d&hs=VIdU&sca_esv=6e2c9a71c05a9bf4&sxsrf=ANbL-n6A35g5Fh961QN9Wmc-CDwsVsrutA:1770346053803&udm=2&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3jljrY5CkLlk8Dq3IvwBz-SJyfRX_inP-J3Cs9lQZu9J3QQItR3OEYwLkKzmr7kPOds-mbrHZ05SQHoSw9Gwghjdt01sH5ZqaLclnWwHCdnb84ZvyEmJ0v7ayb3w69GCb6--AlQkTMIgczcJHznS8W6d3OSxqbAUykH-Zbdtj7cutygTsg&q=cunha+dancing&sa=X&ved=2ahUKEwiHkqr97MOSAxXdd0EAHRKmJgAQtKgLegQIEBAB&biw=959&bih=579&dpr=1.5#sv=CAMSVhoyKhBlLXVLazNoV3pvMEFZeXdNMg51S2szaFd6bzBBWXl3TToOZGx3NHU2cDFKOVhDUk0gBCocCgZtb3NhaWMSEGUtdUtrM2hXem8wQVl5d00YADABGAcgo-qLiQswAkoIEAIYAiACKAI" alt="">
-      <figcaption>Built for big moments</figcaption>
-    </figure>
-  </div>
 </section>
 
 <footer>
-  © 2026 Michael • Glory Glory Man United 🔴
+  © 2026 Michael • Glory Glory Man United
 </footer>
 
 <script>
-// Scroll animations
 const cards = document.querySelectorAll('.card');
 const figures = document.querySelectorAll('.grid figure');
 
 function reveal() {
   const triggerBottom = window.innerHeight * 0.85;
+
   cards.forEach(card => {
     const top = card.getBoundingClientRect().top;
-    if(top < triggerBottom) card.classList.add('visible');
+    if(top < triggerBottom) {
+      card.classList.add('visible');
+    }
   });
+
   figures.forEach(fig => {
     const top = fig.getBoundingClientRect().top;
-    if(top < triggerBottom) fig.classList.add('visible');
+    if(top < triggerBottom) {
+      fig.classList.add('visible');
+    }
   });
 }
 
