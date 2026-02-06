@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&family=Montserrat:wght@600&family=Oswald:wght@500&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -16,59 +16,163 @@
     }
 
     body {
-      height: 100vh;
       font-family: 'Poppins', sans-serif;
       color: white;
-      background:
-        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-        url("https://images.unsplash.com/photo-1606925797300-0b35e9d1794e");
+      background: black;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      height: 100vh;
       background-size: cover;
       background-position: center;
+      animation: slideshow 18s infinite;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      position: relative;
     }
 
-    .container {
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
       padding: 40px;
-      border-radius: 12px;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(4px);
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      margin-bottom: 15px;
-      letter-spacing: 1px;
+      font-size: 3.2rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 1.5s ease;
     }
 
     h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.4rem;
-      margin-bottom: 20px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem;
       color: #f5c542;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      animation: fadeInUp 1.5s ease;
     }
 
     p {
-      font-size: 1rem;
+      max-width: 600px;
+      margin: auto;
       opacity: 0.9;
+      animation: fadeIn 2s ease;
+    }
+
+    /* GALLERY */
+    .gallery {
+      padding: 60px 8%;
+      background: #0d0d0d;
+    }
+
+    .gallery h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .grid img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     }
 
     footer {
-      margin-top: 30px;
+      text-align: center;
+      padding: 25px;
+      background: black;
       font-size: 0.85rem;
-      opacity: 0.7;
+      opacity: 0.6;
+    }
+
+    /* ANIMATIONS */
+    @keyframes slideshow {
+      0% {
+        background-image:
+          linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+          url("https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d");
+      }
+      33% {
+        background-image:
+          linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+          url("https://images.unsplash.com/photo-1521412644187-c49fa049e84d");
+      }
+      66% {
+        background-image:
+          linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+          url("https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e");
+      }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to Michael's Home</h1>
-    <h2>Cristiano Ronaldo ⚡ Kaká</h2>
-    <p>Where legends inspire greatness.</p>
-    <footer>© 2026 Michael</footer>
-  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Michael's Home</h1>
+      <h2>Inspired by Ronaldo & Kaká</h2>
+      <p>
+        Greatness is built on discipline, passion, and belief.
+        This space celebrates football legends and the mindset of champions.
+      </p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery">
+    <h3>Legend Moments</h3>
+    <div class="grid">
+      <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a" alt="Football 1">
+      <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2" alt="Football 2">
+      <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45" alt="Football 3">
+      <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d" alt="Football 4">
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Michael • Built with passion ⚽
+  </footer>
+
 </body>
 </html>
